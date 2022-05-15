@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai';
 import { useQuery } from '@tanstack/react-query';
 import * as React from 'react';
-import { LogOut, RotateCw, Trash2 } from 'react-feather';
+import { DownloadCloud, LogOut, RotateCw, Trash2 } from 'react-feather';
 import { useTranslation } from 'react-i18next';
 import * as logsApi from 'src/api/logs';
 import { fetchVersion } from 'src/api/version';
@@ -15,7 +15,7 @@ import {
   getLatencyTestUrl,
   getSelectedChartStyleIndex,
 } from '../store/app';
-import { fetchConfigs, getConfigs, updateConfigs, reloadConfigs, flushFakeIPPool } from '../store/configs';
+import { fetchConfigs, getConfigs, updateConfigs, reloadConfigs, flushFakeIPPool, updateGeoDatabasesFile } from '../store/configs';
 import { openModal } from '../store/modals';
 import Button from './Button';
 import s0 from './Config.module.scss';
@@ -211,6 +211,14 @@ function ConfigImpl({
     dispatch(flushFakeIPPool(apiConfig));
   },[apiConfig, dispatch]);
 
+  const handleUpgradeCore = useCallback(() => {
+    dispatch(upgradeCore(apiConfig));
+  }, [apiConfig, dispatch]);
+
+  const handleUpdateGeoDatabasesFile = useCallback(() => {
+    dispatch(updateGeoDatabasesFile(apiConfig));
+  }, [apiConfig, dispatch]);
+
   const mode = useMemo(() => {
     const m = configState.mode;
     return typeof m === 'string' && m[0].toUpperCase() + m.slice(1);
@@ -294,6 +302,14 @@ function ConfigImpl({
               start={<Trash2 size={16} />}
               label={t('flush_fake_ip_pool')}
               onClick={handleFlushFakeIPPool}
+          />
+        </div>
+        <div>
+          <div className={s0.label}>GEO Databases</div>
+          <Button
+              start={<DownloadCloud size={16} />}
+              label={t('update_geo_databases_file')}
+              onClick={handleUpdateGeoDatabasesFile}
           />
         </div>
       </div>

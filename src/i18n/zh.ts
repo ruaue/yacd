@@ -44,4 +44,5 @@ export const data = {
   dark_mode_pure_black_toggle_label: '在黑色主题下使用纯黑背景',
   reload_config_file: '重载配置文件',
   flush_fake_ip_pool: '清除FakeIP数据库',
+  update_geo_databases_file: '更新GEO数据库',
 };
