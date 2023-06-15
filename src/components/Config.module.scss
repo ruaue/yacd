@@ -1,11 +1,12 @@
 .root,
 .section {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(345px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
   max-width: 900px;
   gap: 5px;
-  @media screen and (min-width: 30em) {
+  @media screen and (max-width: 49%) {
     gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
   }
 
   .item {
@@ -18,7 +19,7 @@
 
 .root,
 .section {
-  padding: 6px 15px 10px;
+  padding: 6px 8px 10px;
   @media screen and (min-width: 30em) {
     padding: 10px 40px 15px;
   }
