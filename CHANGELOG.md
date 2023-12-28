@@ -16,7 +16,7 @@ Added:
 
 Changed:
 
-- Blended sidebar style
+- Blended sidebar styles
 
 ## [0.3.6](https://github.com/haishanh/yacd/compare/v0.3.5...v0.3.6) (2022-07-23)
 
