@@ -205,10 +205,6 @@ function ConfigImpl({
     dispatch(flushFakeIPPool(apiConfig));
   },[apiConfig, dispatch]);
 
-  const handleUpgradeCore = useCallback(() => {
-    dispatch(upgradeCore(apiConfig));
-  }, [apiConfig, dispatch]);
-
   const handleUpdateGeoDatabasesFile = useCallback(() => {
     dispatch(updateGeoDatabasesFile(apiConfig));
   }, [apiConfig, dispatch]);
