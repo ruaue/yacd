@@ -302,6 +302,7 @@ function ConfigImpl({
               onClick={handleFlushFakeIPPool}
           />
         </div>
+        {(version.meta && version.premium) || (
         <div>
           <div className={s0.label}>GEO Databases</div>
           <Button
@@ -310,6 +311,7 @@ function ConfigImpl({
               onClick={handleUpdateGeoDatabasesFile}
           />
         </div>
+        )}
       </div>
 
       <div className={s0.sep}>
