@@ -51,12 +51,6 @@ const langOptions = [
   ['en', 'English'],
 ];
 
-const modeOptions = [
-  ['Global', 'Global'],
-  ['Rule', 'Rule'],
-  ['Direct', 'Direct'],
-];
-
 const mapState = (s: State) => ({
   configs: getConfigs(s),
   apiConfig: getClashAPIConfig(s),
@@ -232,6 +226,10 @@ function ConfigImpl({
     fetchVersion('/version', apiConfig)
   );
 
+  const modeOptions = useMemo(() => {
+    return configState.modes || [['Rule', 'Rule'], ['Global', 'Global'], ['Direct', 'Direct']];
+  }, [configState.modes]);
+
   return (
     <div>
       <ContentHeader title={t('Config')} />
@@ -254,7 +252,7 @@ function ConfigImpl({
         <div>
           <div className={s0.label}>Mode</div>
           <Select
-            options={modeOptions}
+            options={modeOptions.map((mode) => [mode, mode])}
             selected={mode}
             onChange={(e) => handleChangeValue({ name: 'mode', value: e.target.value })}
           />
